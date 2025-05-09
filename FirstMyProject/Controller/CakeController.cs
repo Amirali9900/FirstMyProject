@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using FirstMyProject.Models;
+using FirstMyProject.ViewModels;
 
 namespace FirstMyProject.Controller
 {
@@ -16,7 +17,14 @@ namespace FirstMyProject.Controller
 
         public IActionResult List()
         {
-            return View();
+            CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake , "cake");
+            return View(cakeListVIewModel);
+
+        }
+
+        private IActionResult View(CakeListVIewModel cakeListVIewModel)
+        {
+            throw new NotImplementedException();
         }
     }
 }
