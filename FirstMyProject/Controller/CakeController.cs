@@ -16,12 +16,7 @@ namespace FirstMyProject.Controller
 
         public IActionResult List()
         {
-            return View(_cakeRepository.AllCake);
-        }
-
-        private IActionResult View(IEnumerable<Cake> allCake)
-        {
-            throw new NotImplementedException();
+            return View();
         }
     }
 }
