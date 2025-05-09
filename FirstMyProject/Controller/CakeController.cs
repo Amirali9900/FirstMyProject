@@ -2,10 +2,11 @@
 using FirstMyProject.Models;
 using FirstMyProject.ViewModels;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace FirstMyProject.Controller
 {
-    public class CakeController : ControllerContext
+    public class CakeController : Controller
     {
         private readonly ICakeRepository _cakeRepository;
         private readonly ICategoryRepository _categoryRepository;
@@ -20,7 +21,13 @@ namespace FirstMyProject.Controller
         {
             CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake , "cake");
             return View(cakeListVIewModel);
-
+        }
+        public IActionResult Details(int id)
+        {
+            var cake = _cakeRepository.GetCakeById(id);
+            if (cake == null)
+                return NotFound();
+            return View(cake);
         }
     }
 }
