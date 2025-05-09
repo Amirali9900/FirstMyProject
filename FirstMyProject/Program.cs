@@ -1,3 +1,6 @@
+using FirstMyProject.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace FirstMyProject
 {
     public class Program
@@ -7,6 +10,12 @@ namespace FirstMyProject
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<CakeShopDbContext>(option =>
+            {
+                option.UseSqlServer(
+                    builder.Configuration["ConnectionStrings:CakeShopDbContextConnection"]);
+            });
 
             var app = builder.Build();
 

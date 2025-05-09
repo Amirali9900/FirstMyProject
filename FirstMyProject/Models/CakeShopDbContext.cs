@@ -1,0 +1,15 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace FirstMyProject.Models
+{
+    public class CakeShopDbContext : DbContext
+    {
+        public CakeShopDbContext(DbContextOptions<CakeShopDbContext> options) : base(options)
+        {
+
+        }
+
+        public DbSet<Cake> Cakes { get; set; }
+        public DbSet<Category> Categories { get; set; }
+    }
+}
