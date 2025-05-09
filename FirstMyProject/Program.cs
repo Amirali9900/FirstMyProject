@@ -9,6 +9,9 @@ namespace FirstMyProject
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<ICakeRepository, CakeRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<CakeShopDbContext>(option =>
