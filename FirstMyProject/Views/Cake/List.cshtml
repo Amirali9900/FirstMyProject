@@ -6,24 +6,7 @@
 
     @foreach (var cake in Model.Cakes)
     {
-        <div class="col">
-            <div class="card pie-card">
-                <img src="@cake.IamgeThumbnailUrl" class="card-img-top" alt="@cake.Name">
-                <div class="card-body pie-button">
-                    <h4 class="d-grid">
-                    </h4>
-
-                    <div class="d-flex justify-content-between mt-2">
-                        <h2 class="text-start">
-                            <a class="pie-link" asp-controller="Cake" asp-action="Details" asp-route-id="@cake.CakeID">@cake.Name</a>
-                        </h2>
-                        <h5 class="text-nowrap">
-                            @cake.Price.ToString("c")
-                        </h5>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <partial name="_CakeCard" model="cake" />
     }
 
 </div>
