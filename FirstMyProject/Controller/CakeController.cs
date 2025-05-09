@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FirstMyProject.Controller
 {
-    public class CakeController : Controller
+    public class CakeController : ControllerContext
     {
         private readonly ICakeRepository _cakeRepository;
         private readonly ICategoryRepository _categoryRepository;
