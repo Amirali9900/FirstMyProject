@@ -4,7 +4,7 @@ using FirstMyProject.ViewModels;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace FirstMyProject.Controller
+namespace FirstMyProject.Controllers
 {
     public class CakeController : Controller
     {
@@ -19,7 +19,7 @@ namespace FirstMyProject.Controller
 
         public IActionResult List()
         {
-            CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake , "cake");
+            CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake , "All Cake");
             return View(cakeListVIewModel);
         }
         public IActionResult Details(int id)
