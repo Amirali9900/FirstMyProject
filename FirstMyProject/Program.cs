@@ -1,5 +1,6 @@
 using FirstMyProject.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace FirstMyProject
 {
@@ -17,14 +18,16 @@ namespace FirstMyProject
             builder.Services.AddSession();
             builder.Services.AddHttpContextAccessor();
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddJsonOptions(option =>
+            {
+                option.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+            });
 
             builder.Services.AddDbContext<CakeShopDbContext>(option =>
             {
                 option.UseSqlServer(
                     builder.Configuration["ConnectionStrings:CakeShopDbContextConnection"]);
             });
-
             var app = builder.Build();
 
             app.UseStaticFiles();
