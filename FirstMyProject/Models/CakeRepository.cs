@@ -30,7 +30,7 @@ namespace FirstMyProject.Models
         }
         public IEnumerable<Cake> SearchCakes(string searchQuery)
         {
-            throw new NotImplementedException();
+            return _cakeShopDbContext.Cakes.Where(p => p.Name.Contains(searchQuery));
         }
     }
 }
