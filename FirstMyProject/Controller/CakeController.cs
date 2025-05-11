@@ -20,7 +20,7 @@ namespace FirstMyProject.Controllers
 
         //public IActionResult List()
         //{
-        //    CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake , "All Cake");
+        //    CakeListVIewModel cakeListVIewModel = new CakeListVIewModel(_cakeRepository.AllCake, "All Cake");
         //    return View(cakeListVIewModel);
         //}
 
@@ -31,12 +31,12 @@ namespace FirstMyProject.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                cakes = _cakeRepository.AllCake.OrderBy(p => p.CakeID);
+                cakes = _cakeRepository.AllCake.OrderBy(p => p.CakeId);
                 currentlycategory = "All Cake";
             }
             else
             {
-                cakes = _cakeRepository.AllCake.Where(p => p.Category.CategoryName == category).OrderBy(p => p.CakeID);
+                cakes = _cakeRepository.AllCake.Where(p => p.Category.CategoryName == category).OrderBy(p => p.CakeId);
                 currentlycategory = _categoryRepository.AllCategories.FirstOrDefault(c => c.CategoryName == category)?.CategoryName;
             }
             return View(new CakeListVIewModel(cakes, currentlycategory));

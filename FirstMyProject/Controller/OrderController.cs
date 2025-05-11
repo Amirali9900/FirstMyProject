@@ -34,14 +34,14 @@ namespace FirstMyProject.Controllers
             {
                 _orderRepository.CreateOrder(order);
                 _shoppingCart.ClearCart();
-                return RedirectToAction("CheckoteComplete");
+                return RedirectToAction("CheckoutComplete");
             }
             return View(order);
         }
 
-        public IActionResult CheckoteComplete()
+        public IActionResult CheckoutComplete()
         {
-            ViewBag.CheckoteCompleteMessage = "Thanks for yor order. you'll soon enjoyour dilicious caks!";
+            ViewBag.CheckoutCompleteMessage = "Thanks for yor order. you'll soon enjoyour dilicious caks!";
             return View();
         }
     }

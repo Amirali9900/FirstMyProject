@@ -7,8 +7,7 @@ namespace FirstMyProject.Models
         private readonly CakeShopDbContext _cakeShopDbContext;
 
         public string? ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> shoppingCartItems { get; set; } = default!;
-        public List<ShoppingCartItem> ShoppingCartItems { get; set ; }
+        public List<ShoppingCartItem> ShoppingCartItems { get; set ; } = default!;
 
         private ShoppingCart(CakeShopDbContext cakeShopDbContext)
         {
@@ -30,7 +29,7 @@ namespace FirstMyProject.Models
 
         public void AddToCart(Cake cake)
         {
-            var shoppingCartItem = _cakeShopDbContext.shoppingCartItems.SingleOrDefault(s => s.Cake.CakeID == cake.CakeID && s.ShoppingCartId == ShoppingCartId);
+            var shoppingCartItem = _cakeShopDbContext.shoppingCartItems.SingleOrDefault(s => s.Cake.CakeId == cake.CakeId && s.ShoppingCartId == ShoppingCartId);
 
             if (shoppingCartItem != null)
             {
@@ -51,7 +50,7 @@ namespace FirstMyProject.Models
 
         public int RemoveFromCart(Cake cake)
         {
-            var shoppingCartItem = _cakeShopDbContext.shoppingCartItems.SingleOrDefault(s => s.Cake.CakeID == cake.CakeID && s.ShoppingCartId == ShoppingCartId);
+            var shoppingCartItem = _cakeShopDbContext.shoppingCartItems.SingleOrDefault(s => s.Cake.CakeId == cake.CakeId && s.ShoppingCartId == ShoppingCartId);
 
             var localAmount = 0;
             if (shoppingCartItem != null)
