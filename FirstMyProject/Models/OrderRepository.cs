@@ -1,6 +1,6 @@
 ﻿namespace FirstMyProject.Models
 {
-    public class OrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly CakeShopDbContext _cakeShopDbContext;
         private readonly IShoppingCart _shoppingCart;
@@ -27,7 +27,7 @@
                 {
                     Amount = shoppingCartItem.Amount,
                     Price = shoppingCartItem.Cake.Price,
-                    CakeId = shoppingCartItem.Cake.CakeID
+                    CakeId = shoppingCartItem.Cake.CakeId
                 };
 
                 order.OrderDetails.Add(orderDetail);

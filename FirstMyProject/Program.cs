@@ -11,6 +11,7 @@ namespace FirstMyProject
 
             builder.Services.AddScoped<ICakeRepository, CakeRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
             builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
             builder.Services.AddSession();
@@ -34,7 +35,9 @@ namespace FirstMyProject
                 app.UseDeveloperExceptionPage();
             }
 
-            app.MapDefaultControllerRoute();
+            //app.MapDefaultControllerRoute();
+            app.MapControllerRoute(name: "default",pattern: "{controller=Home}/{action=Index}/{id?}");
+
             DbInitializer.Seed(app);
             app.Run();
         }

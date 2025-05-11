@@ -21,7 +21,7 @@ namespace FirstMyProject.Models
 
         [Required(ErrorMessage = "Please enter your address")]
         [Display(Name = "Address Line 1")]
-        [StringLength(150)]
+        [StringLength(100)]
         public string AddressLine1 { get; set; } = string.Empty;
 
         [Display(Name = "Address Line 2")]

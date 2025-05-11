@@ -15,10 +15,10 @@ namespace FirstMyProject.Controllers
             _cakeRepository = cakeRepository;
             _shoppingCart = shoppingCart;
         }
-        public ViewResult Index(ShoppingCart shoppingCart)
+        public ViewResult Index()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            shoppingCart.ShoppingCartItems = items;
+            _shoppingCart.ShoppingCartItems = items;
 
             var shoppingCartViewModel = new ShoppingCartViewModel(_shoppingCart, _shoppingCart.GetShoppingCartTotal());
 
@@ -28,11 +28,11 @@ namespace FirstMyProject.Controllers
 
         public RedirectToActionResult AddToShoppingCart(int cakeId)
         {
-            var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeID == cakeId);
+            var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeId == cakeId);
 
-            if(cakeId != null)
+            if (selectCake != null)
             {
-                _shoppingCart.RemoveFromCart(selectCake);
+                _shoppingCart.AddToCart(selectCake);
             }
 
             return RedirectToAction("Index");
@@ -40,9 +40,9 @@ namespace FirstMyProject.Controllers
 
         public RedirectToActionResult RemoveFromShoppingCart(int cakeId)
         {
-            var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeID == cakeId);
+            var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeId == cakeId);
 
-            if (cakeId != null)
+            if (selectCake != null)
             {
                 _shoppingCart.RemoveFromCart(selectCake);
             }
