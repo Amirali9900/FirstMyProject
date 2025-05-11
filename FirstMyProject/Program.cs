@@ -12,6 +12,10 @@ namespace FirstMyProject
             builder.Services.AddScoped<ICakeRepository, CakeRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            builder.Services.AddScoped<IShoppingCart, ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            builder.Services.AddSession();
+            builder.Services.AddHttpContextAccessor();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddDbContext<CakeShopDbContext>(option =>
@@ -23,6 +27,7 @@ namespace FirstMyProject
             var app = builder.Build();
 
             app.UseStaticFiles();
+            app.UseSession();
 
             if (app.Environment.IsDevelopment())
             {
