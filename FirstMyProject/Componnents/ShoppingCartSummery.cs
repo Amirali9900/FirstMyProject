@@ -13,7 +13,7 @@ namespace FirstMyProject.Componnents
             _shoppingCart = shoppingCart;
         }
 
-        public ViewComponentResult Invoke()
+        public IViewComponentResult Invoke()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;

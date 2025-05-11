@@ -15,18 +15,18 @@ namespace FirstMyProject.Controllers
             _cakeRepository = cakeRepository;
             _shoppingCart = shoppingCart;
         }
-        public ViewResult Index()
+        public ViewResult Index(ShoppingCart shoppingCart)
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            ShoppingCart.ShoppingCartItems = items;
+            shoppingCart.ShoppingCartItems = items;
 
-            var shoppingCartViewModel = new ShoppingCartViewModel(_shoppingCart.GetShoppingCartTotal());
+            var shoppingCartViewModel = new ShoppingCartViewModel(_shoppingCart, _shoppingCart.GetShoppingCartTotal());
 
             return View(shoppingCartViewModel);
         }
 
 
-        public RedirectResult AddToShoppingCart(int cakeId)
+        public RedirectToActionResult AddToShoppingCart(int cakeId)
         {
             var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeID == cakeId);
 
@@ -38,7 +38,7 @@ namespace FirstMyProject.Controllers
             return RedirectToAction("Index");
         }
 
-        public RedirectResult RemoveFromShoppingCart(int cakeId)
+        public RedirectToActionResult RemoveFromShoppingCart(int cakeId)
         {
             var selectCake = _cakeRepository.AllCake.FirstOrDefault(p => p.CakeID == cakeId);
 
