@@ -13,7 +13,7 @@ namespace FirstMyProject.Models
                 return _cakeShopDbContext.Cakes.Include(c => c.Category);
             }
         }
-        IEnumerable<Cake> ICakeRepository.CakeOfTheWeek
+        IEnumerable<Cake> ICakeRepository.CakesOfTheWeek
         {
             get
             {

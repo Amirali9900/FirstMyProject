@@ -4,10 +4,10 @@ namespace FirstMyProject.ViewModels
 {
     public class HomeViewModel
     {
-        public IEnumerable<Cake> CakeOfTheWeek { get; }
-        public HomeViewModel(IEnumerable<Cake> cakeOfTheWeek)
+        public IEnumerable<Cake> CakesOfTheWeek { get; }
+        public HomeViewModel(IEnumerable<Cake> cakesOfTheWeek)
         {
-            CakeOfTheWeek = cakeOfTheWeek;
+            CakesOfTheWeek = cakesOfTheWeek;
         }
     }
 }

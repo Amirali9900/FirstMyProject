@@ -14,8 +14,8 @@ namespace FirstMyProject.Controllers
         }
         public IActionResult Index()
         {
-            var cakeOfTheWeek = _cakeRepository.CakeOfTheWeek;
-            var homeViewModel = new HomeViewModel(cakeOfTheWeek);
+            var cakesOfTheWeek = _cakeRepository.CakesOfTheWeek;
+            var homeViewModel = new HomeViewModel(cakesOfTheWeek);
             return View(homeViewModel);
         }
     }
