@@ -18,5 +18,31 @@ namespace FirstMyProject.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Checkout(Order order)
+        {
+            var items = _shoppingCart.GetShoppingCartItems();
+            _shoppingCart.ShoppingCartItems = items;
+
+            if(_shoppingCart.ShoppingCartItems.Count == 0)
+            {
+                ModelState.AddModelError("","Your Cart is empty, add some cake first");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _orderRepository.CreateOrder(order);
+                _shoppingCart.ClearCart();
+                return RedirectToAction("CheckoteComplete");
+            }
+            return View(order);
+        }
+
+        public IActionResult CheckoteComplete()
+        {
+            ViewBag.CheckoteCompleteMessage = "Thanks for yor order. you'll soon enjoyour dilicious caks!";
+            return View();
+        }
     }
 }

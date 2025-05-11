@@ -13,8 +13,6 @@
         public bool IsCakeOfTheWeek { get; set; }
         public bool InStock { get; set; }
         public int CategoriId { get; set; }
-
         public Category Category { get; set; } = default!;
-
     }
 }
